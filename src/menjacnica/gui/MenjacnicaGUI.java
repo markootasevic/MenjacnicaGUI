@@ -62,16 +62,16 @@ public class MenjacnicaGUI extends JFrame {
 	private JScrollPane scrollPane;
 	private JTable table;
 	private JPanel panel_2;
-	private JTextArea textAreaIspis;
+	private static JTextArea textAreaIspis;
 	private JPanel panel_1;
 	private JButton btnDodajKurs;
 	private JButton btnObrisiKurs;
 	private JButton btnIzvrsiZamenu;
+	private JMenuItem mntmAbout;
 	private JPopupMenu popupMenu;
 	private JMenuItem mntmDodajKurs;
 	private JMenuItem mntmObrisiKurs;
 	private JMenuItem mntmIzvrsiZamenu;
-	private JMenuItem mntmAbout;
 
 	/**
 	 * Launch the application.
@@ -93,6 +93,7 @@ public class MenjacnicaGUI extends JFrame {
 	 * Create the frame.
 	 */
 	public MenjacnicaGUI() {
+		
 		addWindowListener(new WindowAdapter() {
 			@Override
 			public void windowClosing(WindowEvent arg0) {
@@ -110,6 +111,7 @@ public class MenjacnicaGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.add(getPanel(), BorderLayout.CENTER);
 	}
+	
 
 	private JMenuBar getMenuBar_1() {
 		if (menuBar == null) {
@@ -208,6 +210,7 @@ public class MenjacnicaGUI extends JFrame {
 		}
 		return scrollPane;
 	}
+	
 	private JTable getTable_1() {
 		if (table == null) {
 			table = new JTable();
@@ -228,10 +231,11 @@ public class MenjacnicaGUI extends JFrame {
 					"New column", "New column", "New column", "New column", "New column", "New column"
 				}
 			));
-			addPopup(table, getPopupMenu());
+			addPopup(table, getPopupMenu_1());
 		}
 		return table;
 	}
+	
 	private JPanel getPanel_2_1() {
 		if (panel_2 == null) {
 			panel_2 = new JPanel();
@@ -261,6 +265,13 @@ public class MenjacnicaGUI extends JFrame {
 	private JButton getBtnDodajKurs() {
 		if (btnDodajKurs == null) {
 			btnDodajKurs = new JButton("Dodaj kurs");
+			btnDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					otvoriDodajKurs();
+								
+				}
+				
+			});
 		}
 		return btnDodajKurs;
 	}
@@ -275,33 +286,6 @@ public class MenjacnicaGUI extends JFrame {
 			btnIzvrsiZamenu = new JButton("Izvrsi zamenu");
 		}
 		return btnIzvrsiZamenu;
-	}
-	private JPopupMenu getPopupMenu() {
-		if (popupMenu == null) {
-			popupMenu = new JPopupMenu();
-			popupMenu.add(getMntmDodajKurs());
-			popupMenu.add(getMntmObrisiKurs());
-			popupMenu.add(getMntmIzvrsiZamenu());
-		}
-		return popupMenu;
-	}
-	private JMenuItem getMntmDodajKurs() {
-		if (mntmDodajKurs == null) {
-			mntmDodajKurs = new JMenuItem("Dodaj kurs");
-		}
-		return mntmDodajKurs;
-	}
-	private JMenuItem getMntmObrisiKurs() {
-		if (mntmObrisiKurs == null) {
-			mntmObrisiKurs = new JMenuItem("Obrisi kurs");
-		}
-		return mntmObrisiKurs;
-	}
-	private JMenuItem getMntmIzvrsiZamenu() {
-		if (mntmIzvrsiZamenu == null) {
-			mntmIzvrsiZamenu = new JMenuItem("Izvrsi zamenu");
-		}
-		return mntmIzvrsiZamenu;
 	}
 	private void ugasiAplikaciju() {
 		int opcija = JOptionPane.showConfirmDialog(contentPane,
@@ -323,5 +307,45 @@ public class MenjacnicaGUI extends JFrame {
 			});
 		}
 		return mntmAbout;
+	}
+	public static void ubaciTekst(String a) {
+		String staro = textAreaIspis.getText();
+		textAreaIspis.setText(staro + "\n" + a);   
+	}
+	private JPopupMenu getPopupMenu_1() {
+		if (popupMenu == null) {
+			popupMenu = new JPopupMenu();
+			popupMenu.add(getMntmDodajKurs());
+			popupMenu.add(getMntmObrisiKurs());
+			popupMenu.add(getMntmIzvrsiZamenu());
+		}
+		return popupMenu;
+	}
+	private JMenuItem getMntmDodajKurs() {
+		if (mntmDodajKurs == null) {
+			mntmDodajKurs = new JMenuItem("Dodaj kurs");
+			mntmDodajKurs.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent arg0) {
+					otvoriDodajKurs();
+				}
+			});
+		}
+		return mntmDodajKurs;
+	}
+	private JMenuItem getMntmObrisiKurs() {
+		if (mntmObrisiKurs == null) {
+			mntmObrisiKurs = new JMenuItem("Obrisi kurs");
+		}
+		return mntmObrisiKurs;
+	}
+	private JMenuItem getMntmIzvrsiZamenu() {
+		if (mntmIzvrsiZamenu == null) {
+			mntmIzvrsiZamenu = new JMenuItem("Izvrsi zamenu");
+		}
+		return mntmIzvrsiZamenu;
+	}
+	private void otvoriDodajKurs() {
+		DodajKursGUI dk = new DodajKursGUI();
+		dk.setVisible(true);
 	}
 }
