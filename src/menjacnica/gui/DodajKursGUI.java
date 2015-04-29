@@ -59,6 +59,7 @@ public class DodajKursGUI extends JFrame {
 	public DodajKursGUI() {
 		addWindowListener(new WindowAdapter() {
 
+			
 		});
 		setResizable(false);
 		setTitle("Dodaj kurs");
@@ -179,7 +180,7 @@ public class DodajKursGUI extends JFrame {
 			btnDodaj = new JButton("Dodaj");
 			btnDodaj.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent arg0) {
-					String novi = "sifra " + textFieldSIfra.getText()
+					String novi = "novi kurs: sifra " + textFieldSIfra.getText()
 							+ "naziv " + textFieldNaziv.getText()
 							+ "Prodajni kurs "
 							+ textFieldProdajniKurs.getText() + "kupovni kurs "
