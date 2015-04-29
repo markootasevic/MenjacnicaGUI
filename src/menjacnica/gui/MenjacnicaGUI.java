@@ -228,7 +228,7 @@ public class MenjacnicaGUI extends JFrame {
 					{null, null, null, null, null, null},
 				},
 				new String[] {
-					"New column", "New column", "New column", "New column", "New column", "New column"
+					"Sifra", "Skraceni naziv", "Prodajni", "Srednji", "Kupovni", "Naziv"
 				}
 			));
 			addPopup(table, getPopupMenu_1());
