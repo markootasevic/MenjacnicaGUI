@@ -199,6 +199,7 @@ public class IzvrsiZamenuGUI extends JFrame {
 						neki += "Kupovina";
 					else neki += "prodaja";
 					MenjacnicaGUI.ubaciTekst(neki);
+					IzvrsiZamenuGUI.this.dispose();
 					
 				}
 			});

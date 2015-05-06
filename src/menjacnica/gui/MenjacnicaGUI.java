@@ -72,6 +72,7 @@ public class MenjacnicaGUI extends JFrame {
 	private JMenuItem mntmDodajKurs;
 	private JMenuItem mntmObrisiKurs;
 	private JMenuItem mntmIzvrsiZamenu;
+	private JScrollPane scrollPane_1;
 
 	/**
 	 * Launch the application.
@@ -241,6 +242,7 @@ public class MenjacnicaGUI extends JFrame {
 			panel_2 = new JPanel();
 			panel_2.setBorder(new TitledBorder(null, "Status", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 			panel_2.setLayout(new BorderLayout(0, 0));
+			panel_2.add(getScrollPane_1_2(), BorderLayout.NORTH);
 			panel_2.add(getTextAreaIspis(), BorderLayout.NORTH);
 		}
 		return panel_2;
@@ -375,5 +377,11 @@ public class MenjacnicaGUI extends JFrame {
 	private void otvoriIzvrsiZamenu () {
 		IzvrsiZamenuGUI iz = new IzvrsiZamenuGUI();
 		iz.setVisible(true);
+	}
+	private JScrollPane getScrollPane_1_2() {
+		if (scrollPane_1 == null) {
+			scrollPane_1 = new JScrollPane();
+		}
+		return scrollPane_1;
 	}
 }

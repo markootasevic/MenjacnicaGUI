@@ -172,6 +172,7 @@ public class ObrisiKursGUI extends JFrame {
 				public void actionPerformed(ActionEvent arg0) {
 					String poruka = "nema sta da se prise kad polja ne mogu da se menjaju al evo neki tekst";
 					MenjacnicaGUI.ubaciTekst(poruka);
+					ObrisiKursGUI.this.dispose();
 				}
 			});
 			btnObrisi.setEnabled(false);
